@@ -1,0 +1,317 @@
+/* Reset básico para eliminar margen y padding por defecto y usar box-sizing border-box */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales para body */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f7fa;   /* Fondo gris claro */
+    color: #333;            /* Texto gris oscuro */
+    line-height: 1.6;
+    min-height: 100vh;      /* Altura mínima de toda la ventana */
+    display: flex;
+    flex-direction: column; /* Para que el footer se quede al fondo */
+}
+
+/* Contenedor principal para centrar contenido y limitar ancho */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 10px;
+    padding-top: 60px; /* Para que no quede oculto bajo el nav fijo */
+    flex: 1;
+}
+
+/* Header de la página con fondo oscuro y texto blanco */
+header {
+    background: #222;
+    color: white;
+    padding: 15px 10px;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+/* Navbar fijo arriba */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+/* Contenedor dentro del nav para separar logo y menú */
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+/* Logo de la tienda */
+.nav-logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #222;
+}
+
+/* Menú principal con enlaces */
+.nav-menu {
+    display: flex;
+    gap: 20px;
+}
+
+/* Estilo de enlaces del menú */
+.nav-menu a {
+    text-decoration: none;
+    color: #444;
+    font-weight: 600;
+    padding: 8px 15px;
+    border-radius: 25px;
+    transition: 0.3s;
+    line-height: 1.5;
+}
+
+/* Hover y estado activo */
+.nav-menu a:hover,
+.nav-menu a.active {
+    background: #222;
+    color: white;
+}
+
+/* Botón hamburguesa oculto por defecto */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+/* Barras del botón hamburguesa */
+.nav-toggle span {
+    width: 25px;
+    height: 3px;
+    background: #222;
+    margin-bottom: 5px;
+    border-radius: 2px;
+}
+
+/* Responsivo para pantallas pequeñas */
+@media (max-width: 768px) {
+    /* Menú oculto y deslizable a la derecha */
+    .nav-menu {
+        position: fixed;
+        top: 60px;
+        right: 0;
+        background: #fff;
+        width: 200px;
+        height: calc(100% - 60px);
+        flex-direction: column;
+        padding-top: 20px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+    }
+
+    /* Menú visible cuando tiene clase open */
+    .nav-menu.open {
+        transform: translateX(0);
+    }
+
+    /* Mostrar botón hamburguesa */
+    .nav-toggle {
+        display: flex;
+    }
+}
+
+/* Grilla para mostrar productos */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 25px;
+}
+
+/* Tarjeta individual de producto */
+.product-card {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease;
+}
+
+/* Efecto hover en tarjeta */
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Imagen del producto */
+.product-card img {
+    width: 100%;
+    border-radius: 10px;
+    height: 180px;
+    object-fit: cover;
+}
+
+/* Información dentro de la tarjeta */
+.product-info {
+    margin-top: 10px;
+}
+
+/* Nombre del producto */
+.product-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+/* Precio y stock */
+.product-info p {
+    color: #777;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+}
+
+/* Botón general */
+.btn {
+    background: #222;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%;
+}
+
+.btn:hover {
+    background: #444;
+}
+
+/* Mensajes de éxito y error */
+.message {
+    padding: 10px 20px;
+    margin: 15px auto;
+    max-width: 600px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Fondo y texto para mensajes */
+.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Input cantidad */
+.quantity-input {
+    width: 60px;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+/* Tabla carrito */
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f0f0f0;
+}
+
+input.quantity {
+    width: 60px;
+    padding: 5px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+/* Botones filtro */
+.filter-btn {
+    background: #eee;
+    border: none;
+    margin: 0 5px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.filter-btn:hover {
+    background: #ccc;
+}
+
+.filter-btn.active {
+    background: #222;
+    color: white;
+}
+
+/* Footer de la página */
+footer {
+    background: #222;
+    color: white;
+    padding: 25px 15px;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+
+/* Botones sociales en footer */
+footer .social-buttons {
+    margin-top: 15px;
+}
+
+footer .social-buttons a {
+    display: inline-block;
+    margin: 0 10px;
+    color: white;
+    width: 30px;
+    height: 30px;
+    transition: color 0.3s;
+    text-decoration: none;
+}
+
+footer .social-buttons a svg {
+    fill: white;
+    width: 100%;
+    height: 100%;
+}
+
+footer .social-buttons a:hover svg {
+    fill: #ddd;
+}
+
+/* Ajustes responsive para pantallas muy pequeñas */
+@media(max-width: 600px) {
+    .nav-container {
+        padding: 10px;
+    }
+}
